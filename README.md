@@ -1,7 +1,7 @@
 <p align="center">
   <h2 align="center">EnTeasers | Entertainment Teasers</h2>
   <h4 align="center">(Netflix Clone)</h4>
-  <p><b>Disclaimer:</b> This project, EnTeasers, is a Netflix-inspired clone created for educational purposes only. It is not affiliated with or endorsed by Netflix, Inc..</p>
+  <p><b>Disclaimer:</b> This project, EnTeasers, is a Netflix-inspired clone created for educational purposes only. It is not affiliated with or endorsed by Netflix, Inc...</p>
 </p>
 <br>
 <br>
