@@ -8,7 +8,7 @@ const VideoPopUpContextProvider = (props) => {
 
    videoPopUpTrigger ? (document.body.style.overflow = "hidden") : (document.body.style.overflow = "visible");
 
-   return (
+   return ( // check this
       <VideoPopUpContext.Provider value={{ videoPopUpTrigger, setVideoPopUpTrigger }}>
          {props.children}
       </VideoPopUpContext.Provider>
