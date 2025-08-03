@@ -1,0 +1,274 @@
+.row {
+  $poster-row-gap: 1.5rem;
+  $poster-row-padding: 2rem;
+ 
+  margin: 0 $poster-row-padding;
+  //  border: 2px white solid;
+   // background-color: #ffd700;
+   // margin-top: 400px;
+  .heading {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    position: relative; 
+    
+     &::after {
+      content: '';
+      position:absolute;
+      display: block;
+      width: 80px;
+      height: 2px;
+      background: linear-gradient(90deg, #0052ce, transparent);
+      margin-top: 2.5rem;
+    }
+
+    
+    &__title {
+      font-size: clamp(1.2rem, 3vw, 1.8rem);
+      font-weight: 600;
+      margin: 0;
+     
+    }
+    
+    &--seeMoreBtn {
+      cursor: pointer;
+      margin-left: 1rem;
+      padding: 0.4rem 0.8rem;
+      border-radius: 4px;
+      border: none;
+      background-color: rgba(27, 26, 26, 0.7);
+      color: rgb(249, 1, 1);
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      
+      &:hover {
+        color: black;
+        background-color: #f0f0f0;
+        transform: translateY(-1px);
+      }
+      
+      svg {
+        width: 0.8rem;
+        height: 0.8rem;
+        fill: currentColor;
+      }
+    }
+  }
+   
+   position: relative;
+   top:130px;
+  .poster__row {
+    display: flex;
+    gap: $poster-row-gap;
+    padding: 1rem 0 2.5rem;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-behavior: smooth;
+    scroll-snap-type: x proximity;
+    scroll-padding: 0 $poster-row-padding;
+    scrollbar-width: none;
+    
+    &::-webkit-scrollbar {
+      display: none;
+      height: 6px;
+      background: transparent;
+    }
+    
+    &::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 3px;
+    }
+    
+    &:hover::-webkit-scrollbar {
+      display: block;
+    }
+    
+    .poster__lg {
+      min-width: 180px;
+      scroll-snap-align: start;
+    }
+    
+    .poster__sm {
+      min-width: 140px;
+      scroll-snap-align: start;
+    }
+     
+    .poster__lg,
+    .poster__sm {
+      $poster-transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      position: relative;
+      cursor: pointer;
+      transition: $poster-transition;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      aspect-ratio: 2/3;
+      
+      &:hover {
+        transform: scale(1.08) translateY(-5px);
+        z-index: 2;
+        box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
+        
+        .poster__overlay {
+          opacity: 1;
+        }
+      }
+      
+      &--img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: $poster-transition;
+      }
+      
+      .poster__overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, transparent 50%);
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 1rem;
+        opacity: 0;
+        transition: $poster-transition;
+        
+        &__title {
+          color: white;
+          font-weight: 600;
+          margin-bottom: 0.5rem;
+          font-size: 0.95rem;
+          text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+        }
+        
+        &__rating {
+          display: flex;
+          align-items: center;
+          color: #ffd700;
+          font-size: 0.85rem;
+          
+          svg {
+            width: 0.9rem;
+            height: 0.9rem;
+            margin-right: 0.3rem;
+            fill: currentColor;
+          }
+        }
+      }
+      
+      .poster__loading__div {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: rgba(50, 50, 50, 0.8);
+        backdrop-filter: blur(2px);
+        
+        .loading-spinner {
+          width: 2.5rem;
+          height: 2.5rem;
+          border: 3px solid rgba(255, 255, 255, 0.2);
+          border-radius: 50%;
+          border-top-color: white;
+          animation: spin 1s ease-in-out infinite;
+        }
+      }
+    }
+  }
+  
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .row {
+    $poster-row-padding: 1.5rem;
+    margin: 0 $poster-row-padding;
+    
+    .poster__row {
+      .poster__lg {
+        min-width: 160px;
+      }
+      
+      .poster__sm {
+        min-width: 120px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .row {
+    $poster-row-padding: 1rem;
+    margin: 0 $poster-row-padding;
+    
+    .heading {
+      margin-bottom: 0.8rem;
+      
+      &__title {
+        font-size: 1.3rem;
+      }
+      
+      &--seeMoreBtn {
+        padding: 0.3rem 0.6rem;
+        font-size: 0.8rem;
+      }
+    }
+    
+    .poster__row {
+      gap: 1rem;
+      padding-bottom: 2rem;
+      
+      .poster__lg {
+        min-width: 140px;
+      }
+      
+      .poster__sm {
+        min-width: 100px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .row {
+    $poster-row-padding: 0.8rem;
+    margin: 0 $poster-row-padding;
+    
+    .poster__row {
+      gap: 0.8rem;
+      padding-bottom: 1.5rem;
+      
+      .poster__lg {
+        min-width: 110px;
+      }
+      
+      .poster__sm {
+        min-width: 80px;
+      }
+      
+      .poster__lg,
+      .poster__sm {
+        border-radius: 6px;
+        
+        .poster__overlay {
+          padding: 0.6rem;
+          
+          &__title {
+            font-size: 0.8rem;
+          }
+          
+          &__rating {
+            font-size: 0.75rem;
+          }
+        }
+      }
+    }
+  }
+}
